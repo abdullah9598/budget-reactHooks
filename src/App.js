@@ -2,15 +2,16 @@ import logo from "./logo.svg";
 import "./App.css";
 import {
   Container,
-  Header,
   Segment,
-  Statistic,
   Grid,
   Icon,
   Form,
-  Input,
-  Button,
 } from "semantic-ui-react";
+
+import MainHeader from "./component/MainHeader";
+import ButtonSaveorCancel from "./component/ButtonSaveorCancel";
+import NewEntryForm from "./component/NewEntryForm";
+import DisplayBalance from "./component/DisplayBalance";
 
 function App() {
   //   const InputExampleLoadingWithoutIcon = () => (
@@ -19,14 +20,8 @@ function App() {
 
   return (
     <Container>
-      {/* Header of the application */}
-      <Header as="h1" color="purple">
-        Budget App
-      </Header>
-      <Statistic>
-        <Statistic.Label>Your Balance : </Statistic.Label>
-        <Statistic.Value> $ 2550.00</Statistic.Value>
-      </Statistic>
+      <MainHeader title="MyBudgetApp" type="h2" color="purple" />
+      <DisplayBalance data={{color:'black',title:'Budget',expense:'12500 USD'}} />
 
       {/* Income and Expense segement */}
       <Segment textAlign="center">
@@ -34,29 +29,19 @@ function App() {
           <Grid.Row>
             {/* Column 1 Income */}
             <Grid.Column textAlign="center">
-              <Statistic size="tiny" color="green">
-                <Statistic.Label style={{ textAlign: "center" }}>
-                  Incoming:
-                </Statistic.Label>
-                <Statistic.Value>1045.50 USD</Statistic.Value>
-              </Statistic>
+            <DisplayBalance data={{size:'tiny',color:'green',alignment:'center',title:'Income',expense:'24999 USD'}} />
             </Grid.Column>
 
             {/* Column 2 Expenes */}
             <Grid.Column>
-              <Statistic size="tiny" color="red">
-                <Statistic.Label style={{ textAlign: "center" }}>
-                  Expenses:
-                </Statistic.Label>
-                <Statistic.Value>755.50 USD</Statistic.Value>
-              </Statistic>
+              <DisplayBalance data={{size:'tiny',color:'red',alignment:'center',title:'Expense',expense:'750 USD'}} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
 
       {/* Transaction history segment */}
-      <Header as="h3">History</Header>
+      <MainHeader type="h3" title="History" />
 
       <Segment color="red">
         <Grid columns={3} textAlign="center" divided>
@@ -74,30 +59,10 @@ function App() {
       </Segment>
 
       <br />
-
-      <Header as="h2">ADD NEW TRANSACTION</Header>
+      <MainHeader type="h2" title="ADD NEW TRANSACTION" />
       <Form unstackable>
-        <Form.Group>
-          <Form.Input
-            placeholder="Enter transaction here"
-            icon="tags"
-            label="Name"
-            width={12}
-          ></Form.Input>
-
-          <Form.Input
-            placeholder="Value"
-            icon="dollar"
-            label="Value"
-            width={4}
-          ></Form.Input>
-        </Form.Group>
-
-        <Button.Group style={{marginTop:'20px'}}>
-          <Button color='red'>Cancel</Button>
-          <Button.Or color='orange'/>
-          <Button color='blue'>Add Transaction</Button>
-        </Button.Group>
+        <NewEntryForm />
+        <ButtonSaveorCancel />
       </Form>
     </Container>
   );
