@@ -12,6 +12,7 @@ import MainHeader from "./component/MainHeader";
 import ButtonSaveorCancel from "./component/ButtonSaveorCancel";
 import NewEntryForm from "./component/NewEntryForm";
 import DisplayBalance from "./component/DisplayBalance";
+import DisplayBalances from "./component/DisplayBalances";
 
 function App() {
   //   const InputExampleLoadingWithoutIcon = () => (
@@ -43,20 +44,7 @@ function App() {
       {/* Transaction history segment */}
       <MainHeader type="h3" title="History" />
 
-      <Segment color="red">
-        <Grid columns={3} textAlign="center" divided>
-          <Grid.Row>
-            <Grid.Column width={9} textAlign="left">
-              Something
-            </Grid.Column>
-            <Grid.Column width={3}>$299</Grid.Column>
-            <Grid.Column width={3}>
-              <Icon name="edit" />
-              <Icon name="trash" style={{ cursor: "pointer" }} />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
+       <DisplayBalances />
 
       <br />
       <MainHeader type="h2" title="ADD NEW TRANSACTION" />
